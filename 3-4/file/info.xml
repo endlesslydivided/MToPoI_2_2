@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info.xsd">
+    <account>
+        <balanceAmount>2053</balanceAmount>
+        <status>true</status>
+    </account>
+    <account>
+        <balanceAmount>23234</balanceAmount>
+        <status>false</status>
+    </account>
+	<account>
+        <balanceAmount>234</balanceAmount>
+        <status>false</status>
+    </account>
+	<account>
+        <balanceAmount>232344</balanceAmount>
+        <status>true</status>
+    </account>
+</accounts>
