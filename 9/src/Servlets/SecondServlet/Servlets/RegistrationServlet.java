@@ -24,11 +24,11 @@ public class RegistrationServlet extends HttpServlet {
             UsersJson usersJson = new UsersJson();
             User user = new User(login, password);
             if (usersJson.getUsersFromFile().contains(user)) {
-                writer.println("This account already exists");
+                writer.println("Аккаунт уже существует!");
             }
             else {
                 usersJson.addUser(user);
-                writer.println("Registration complete");
+                writer.println("Регистрация прошла успешно");
             }
         } catch(Exception ex) {
             writer.println(Arrays.toString(ex.getStackTrace()));

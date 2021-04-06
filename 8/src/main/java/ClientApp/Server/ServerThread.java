@@ -1,9 +1,11 @@
 package ClientApp.Server;
 
+import main.java.ClientApp.Server.Server;
+
 import java.io.*;
 import java.net.Socket;
 
-class ServerThread extends Thread {
+public class ServerThread extends Thread {
 
     private Socket socket;
     private BufferedReader reader;

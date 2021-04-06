@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalTime;
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
@@ -21,10 +22,11 @@ public class LoginServlet extends HttpServlet {
             UsersJson usersJson = new UsersJson();
 
             if(usersJson.checkUser(new User(login, password))) {
-                writer.println("<img src=\"https://allvkstickers.ru/wp-content/uploads/2019/11/sberkot-i-kusya-42.jpg\"></img>");
+                writer.println("<h1> Добро пожаловать," + login + "! <h1>");
+                writer.println("<h1 style=\"text-align: center;\">Текущее время " + LocalTime.now() + "</h1>");
             }
             else {
-                writer.println("Такого пользователя не существует или данные с ошибкой :(");
+                writer.println("Такого пользователя не существует или данные ошибочны");
             }
         } finally {
             writer.println();

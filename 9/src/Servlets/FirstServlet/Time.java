@@ -22,13 +22,13 @@ public class Time extends HttpServlet {
             writer.println("</head>");
             writer.println("<body>");
             writer.println("<h1 style=\"text-align: center;\">Текущее время " + LocalTime.now() + "</h1>");
-            writer.println("<p style=\"background: red\">Версия и номер протокола " + "<b>" + request.getProtocol() + "</b>" + "</p>");
-            writer.println("<p style=\"background: orange\">IP-адреса клиента, от имени которого пришел запрос и его имя" + "<b>" + request.getRemoteAddr() + "  " + request.getRemoteUser() + "</b>" + "</p>");
-            writer.println("<p style=\"background: yellow\">Имя метода доступа к ресурсам, на основе которого построен запрос " + "<b>" + request.getMethod() + "</b>" + "</p>");
-            writer.println("<p style=\"background: green\">URL-адрес, который клиент использовал для выполнения запроса " + "<b>" + request.getRequestURL() + "</b>" + "</p>");
-            writer.println("<p style=\"background: skyblue\">часть URL-адреса этого запроса, которая вызывает сервлет " + "<b>" + request.getServletPath() + "</b>" + "</p>");
-            writer.println("<p style=\"background: blue\">Возвращает любую дополнительную информацию о пути, связанную с URL-адрес, который клиент отправил при выполнении этого запроса " + "<b>" + request.getPathInfo() + "</b>" + "</p>");
-            writer.println("<p style=\"background: purple\">Информация о заголовках");
+            writer.println("<p style=\"background: #00FA9A\">Версия и номер протокола " + "<b>" + request.getProtocol() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">IP-адреса клиента, от имени которого пришел запрос и его имя" + "<b>" + request.getRemoteAddr() + "  " + request.getRemoteUser() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">Имя метода доступа к ресурсам, на основе которого построен запрос " + "<b>" + request.getMethod() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">URL-адрес, который клиент использовал для выполнения запроса " + "<b>" + request.getRequestURL() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">часть URL-адреса этого запроса, которая вызывает сервлет " + "<b>" + request.getServletPath() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">Возвращает любую дополнительную информацию о пути, связанную с URL-адрес, который клиент отправил при выполнении этого запроса " + "<b>" + request.getPathInfo() + "</b>" + "</p>");
+            writer.println("<p style=\"background: #00FA9A\">Информация о заголовках");
             Enumeration<String> headerNames = request.getHeaderNames();
             while(headerNames.hasMoreElements()){
                 String name = headerNames.nextElement();
@@ -36,7 +36,6 @@ public class Time extends HttpServlet {
                 writer.println(name + ":  " + headerValues);
             }
             writer.println("</p>");
-            writer.println("<img src=\"https://i.pinimg.com/originals/8b/23/01/8b2301ccf47546a701e344b588a2c0c1.png\"></img>");
             writer.println("</body>");
             writer.println("</html>");
         } finally {

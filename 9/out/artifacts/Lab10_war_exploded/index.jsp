@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
     <title>Lab10</title>
@@ -7,30 +7,38 @@
         display: inline-block;
         margin-right: 100px;
       }
+
+      input {
+        width: 300px;
+        font-size: 13px;
+        padding: 6px 0 4px 10px;
+        border: 1px solid #cecece;
+        background: #F6F6f6;
+        border-radius: 8px;
+      }
     </style>
   </head>
 
   <body>
-  <div class="horizontal">
-    <img src="https://vk.com/sticker/1-81-128" style="margin: 10px">
+  <div >
     <form action="Time" method="GET">
-      <input type="submit" value="Получить информацию">
+      <input type="submit"  style="" value="Получить информацию">
     </form>
   </div>
 
-  <div class="horizontal">
-    <img src="https://pbs.twimg.com/media/Dg41IFQW4AA3Cm1.jpg:large" style="margin: 10px">
+  <div >
     <form method="POST" action="GoToLogin">
-      <input type="submit" value="Окно авторизации"/>
+      <input type="submit"   style="" value="Окно авторизации">
+      </input>
     </form>
   </div>
 
-  <div class="horizontal">
+  <div >
     <form method="GET" action="FirstServlet">
-      <input type="submit" value="6"/>
+      <input type="submit"  style="" value="GET"/>
     </form>
     <form method="POST" action="FirstServlet">
-      <input type="submit" value="6"/>
+      <input type="submit"  style="" value="POST"/>
     </form>
   </div>
   </body>
