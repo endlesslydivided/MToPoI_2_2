@@ -10,6 +10,7 @@ import java.io.IOException;
 @WebServlet(name = "FirstServlet", urlPatterns = {"/FirstServlet"})
 public class FirstServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("Name","Alex");
         request.getRequestDispatcher("SecondServletPost").forward(request,response);
     }
 

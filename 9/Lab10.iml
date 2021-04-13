@@ -9,6 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -21,10 +22,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="GlassFish 5.0.11" level="application_server_libraries" />
     <orderEntry type="library" exported="" name="javax.annotation" level="project" />
-    <orderEntry type="library" exported="" name="sqljdbc4" level="project" />
     <orderEntry type="library" exported="" name="gson-2.8.6" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8_0_20" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8_0_20-sources" level="project" />
-    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="log4j-1.2.17" level="project" />
   </component>
 </module>

@@ -8,6 +8,6 @@
 <h1><%= "Мой первый сервлет!" %>
 </h1>
 <br/>
-<a href="name-servlet">Имя и фамилия</a>
+<a href="com-My-Name-Servlet">Имя и фамилия</a>
 </body>
 </html>

@@ -33,7 +33,7 @@
     </form>
   </div>
 
-  <div >
+  <div>
     <form method="GET" action="FirstServlet">
       <input type="submit"  style="" value="GET"/>
     </form>

@@ -1,4 +1,4 @@
-package ClientApp.Client;
+package main.java.ClientApp.Client;
 
 public class Client {
 
@@ -7,6 +7,6 @@ public class Client {
 
     public static void main(String[] args)
     {
-        new ClientThread(IPAddress, PORT);
+        new ClientApp.Client.ClientThread(IPAddress, PORT);
     }
 }

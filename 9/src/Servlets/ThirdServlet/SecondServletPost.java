@@ -15,7 +15,9 @@ public class SecondServletPost extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String name = request.getAttribute("Name").toString();
         out.println("<h4 style=\"text-align: center;\">Текущее время " + LocalTime.now() + "</h4>");
+        out.println("<h1 style=\"text-align: center;\">"+name+"</h1>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

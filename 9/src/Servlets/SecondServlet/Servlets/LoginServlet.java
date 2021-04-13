@@ -2,7 +2,9 @@ package Servlets.SecondServlet.Servlets;
 
 import Servlets.SecondServlet.Model.User;
 import Servlets.SecondServlet.Model.UsersJson;
+
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +20,14 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = String.valueOf(request.getParameter("password").hashCode());
         PrintWriter writer = response.getWriter();
+        PrintWriter out = response.getWriter();
         try {
             UsersJson usersJson = new UsersJson();
 
+                response.addCookie(new Cookie(login, password));
+            writer.println("Куки установлен <br>");
             if(usersJson.checkUser(new User(login, password))) {
+                response.sendRedirect("main.jsp");
                 writer.println("<h1> Добро пожаловать," + login + "! <h1>");
                 writer.println("<h1 style=\"text-align: center;\">Текущее время " + LocalTime.now() + "</h1>");
             }
@@ -31,6 +37,7 @@ public class LoginServlet extends HttpServlet {
         } finally {
             writer.println();
             writer.close();
+            out.close();
         }
     }
 }

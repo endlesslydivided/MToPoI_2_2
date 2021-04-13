@@ -5,10 +5,10 @@
     </head>
 <body>
 <fieldset>
-    <legend>Authorize</legend>
+    <legend>Авторизация</legend>
     <form action="Login" method="POST">
-        <input name="login" type="text" placeholder="login"/>
-        <input name="password" type="text" placeholder="password"/>
+        <input name="login" type="text" placeholder="Логин"/>
+        <input name="password" type="text" placeholder="Пароль"/>
         <input type="submit" value="Войти"/>
     </form>
 </fieldset>
