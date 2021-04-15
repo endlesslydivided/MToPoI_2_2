@@ -23,12 +23,11 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             UsersJson usersJson = new UsersJson();
-
-                response.addCookie(new Cookie(login, password));
-            writer.println("Куки установлен <br>");
             if(usersJson.checkUser(new User(login, password))) {
                 response.sendRedirect("main.jsp");
                 writer.println("<h1> Добро пожаловать," + login + "! <h1>");
+                response.addCookie(new Cookie(login, password));
+                writer.println("Куки установлен <br>");
                 writer.println("<h1 style=\"text-align: center;\">Текущее время " + LocalTime.now() + "</h1>");
             }
             else {

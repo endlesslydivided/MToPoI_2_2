@@ -8,7 +8,6 @@
         <listener-class>Filters.SessionListener</listener-class>
     </listener>
 
-
     <filter>
         <filter-name>Filter</filter-name>
         <filter-class>Filters.CharsetFilter</filter-class>
