@@ -6,6 +6,7 @@ import DB.User;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -18,24 +19,29 @@ public class SuccessRegister extends HttpServlet {
         DBConnector connection = new DBConnector();
         try
         {
+            response.setContentType("text/html;charset=Windows-1251");
             connection.SetConnection();
             String login = request.getParameter("login");
             String password = String.valueOf(request.getParameter("password"));
             User user = new User(login,password);
-            ResultSet queryResult = connection.Select("LOGIN =" + login,"USERS");
+            System.out.println("SELECT USERS.login FROM USERS WHERE login='" + login + "'");
+            ResultSet queryResult = connection.ExecuteQuery("SELECT USERS.login FROM USERS WHERE login='" + login + "'");
+
 
             while (queryResult.next())
             {
-                if(queryResult.getString("LOGIN") != login);
+                if(queryResult.getString("login") == login);
                 {
-                    connection.Insert("USERS",login,user.HashPassword(),user.getSalt());
-                    request.setAttribute("Registration","Регистрация прошла успешно");
-                    request.getRequestDispatcher("GoToLoginIn").forward(request,response);
+                    PrintWriter out = response.getWriter();
+                    out.println("<h1 style=\"text-align: center; color:red\">Регистрация не прошла успешно. Придумайте другой логин!</h1>");
                     return;
                 }
             }
-            PrintWriter out = response.getWriter();
-            out.println("<h1 style=\"text-align: center; color:red\">Регистрация не прошла успешно. Придумайте другой логин!</h1>");
+
+            connection.Execute("SET NOCOUNT ON; INSERT INTO USERS values ('" +login + "','" + user.HashPassword()+ "','"+user.getSalt() + "')");
+            request.setAttribute("Registration","Регистрация прошла успешно");
+            request.getRequestDispatcher("/GoToLoginIn").forward(request,response);
+            return;
 
 
         } catch (SQLException exception) {
@@ -43,12 +49,8 @@ public class SuccessRegister extends HttpServlet {
             request.setAttribute("Cause",exception.getCause());
             request.setAttribute("Class",exception.getClass());
             request.setAttribute("ST",exception.getStackTrace());
-            System.out.println("\n Message: " +
-                    (exception.getMessage() == null?"---":exception.getMessage())  + "\n Cause:" +
-                    (exception.getCause()== null?"---":exception.getCause())+ "\n Class: " +
-                    (exception.getClass()== null?"---":exception.getClass()) + "\n Stack trace" +
-                    (exception.getStackTrace()== null?"---":exception.getStackTrace()) + "\n" );
-            request.getRequestDispatcher("GoToError").forward(request,response);
+
+            request.getRequestDispatcher("/errorPage.jsp").forward(request,response);
         }
     }
 }

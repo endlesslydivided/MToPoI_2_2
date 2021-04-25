@@ -19,6 +19,7 @@ public class User {
 
     public User()
     {
+
         this.login ="login";
         this.password = "password";
         this.salt = BCrypt.gensalt();

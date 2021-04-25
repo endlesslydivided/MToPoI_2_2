@@ -24,10 +24,10 @@
                         <legend>Вход</legend>
                     <form action="SuccessLogin " method="POST">
                     <label for="login">Логин</label>
-                    <input type="login" class="form-control" id="login" placeholder="Введите логин">
+                    <input name="login"   class="form-control" id="login" placeholder="Введите логин">
 
                     <label for="password">Пароль</label>
-                    <input type="password" class="form-control" id="password" placeholder="Введите пароль">
+                    <input name="password"   type="password" class="form-control" id="password" placeholder="Введите пароль">
 
                     <input  type="submit" class="btn btn-info mx-auto" value="Вход"/>
                     </form>
@@ -35,7 +35,6 @@
                             <input type="submit"  class="btn btn-info mx-auto" value="Регистрация"/>
                         </form>
                     </fieldset>
-
                 </div>
             </div>
         </div>

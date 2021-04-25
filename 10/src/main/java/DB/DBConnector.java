@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.microsoft.sqlserver.jdbc.*;
 
 public class DBConnector {
 
@@ -13,19 +14,26 @@ public class DBConnector {
             "jdbc:sqlserver://DESKTOP-A8E6OVC;"
                     + "database=USERSJAVA;"
                     + "user=booba;"
-                    + "password=sitinsilence;"
+                    + "password=stayalive;"
                     + "encrypt=false;"
                     + "trustServerCertificate=false;"
                     + "loginTimeout=30;";
 
     public static Connection connection;
 
-    public void SetConnection() throws SQLException {
-            connection = DriverManager.getConnection(connectionUrl);
+
+    public void SetConnection() throws SQLException  {
+
+        DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+        connection = DriverManager.getConnection(connectionUrl);
     }
 
     public ResultSet ExecuteQuery(String query) throws SQLException{
         return connection.createStatement().executeQuery(query);
+    }
+
+    public void Execute(String query) throws SQLException{
+        connection.createStatement().execute(query);
     }
 
     public void Insert(String table,String ... parms) throws SQLException
@@ -55,10 +63,16 @@ public class DBConnector {
     public ResultSet Select(String predicate, String ... tables) throws SQLException
     {
         String query = "SELECT FROM ";
+        int iter = 0;
         for (String s:tables)
         {
             query += s;
-            query += ",";
+            iter++;
+            if(tables.length != iter)
+            {
+                query += ",";
+            }
+
         }
         query += " WHERE " + predicate;
         return connection.createStatement().executeQuery(query);

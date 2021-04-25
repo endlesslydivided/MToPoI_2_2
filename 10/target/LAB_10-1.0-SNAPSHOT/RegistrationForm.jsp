@@ -30,10 +30,10 @@
                         <legend>Регистрация</legend>
                         <form action="SuccessRegister" method="POST">
                             <label for="login">Логин</label>
-                            <input type="login" class="form-control" id="login" placeholder="Введите логин">
+                            <input name="login"   class="form-control" id="login" placeholder="Введите логин">
 
                             <label for="password">Пароль</label>
-                            <input type="password" class="form-control" id="password" placeholder="Введите пароль">
+                            <input name="password"  class="form-control" id="password" placeholder="Введите пароль">
 
                             <input type="submit"  class="btn btn-info mx-auto" value="Зарегистрироваться"/>
 
