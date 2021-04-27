@@ -2,6 +2,7 @@ package Login_Register;
 
 import DB.DBConnector;
 import DB.User;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -33,6 +34,8 @@ public class SuccessLogin extends HttpServlet {
                     {
                         System.out.println("test2");
                         response.sendRedirect("main.jsp");
+                        String log4jConfPath = "..\\10\\src\\resources\\log4j.properties";
+                        PropertyConfigurator.configure(log4jConfPath);
                         return;
                     }
                 }
@@ -55,6 +58,4 @@ public class SuccessLogin extends HttpServlet {
                 request.getRequestDispatcher("/errorPage.jsp").forward(request,response);
         }
     }
-
-
 }

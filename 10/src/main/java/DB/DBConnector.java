@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
+
 import com.microsoft.sqlserver.jdbc.*;
 
 public class DBConnector {
@@ -22,10 +24,14 @@ public class DBConnector {
     public static Connection connection;
 
 
-    public void SetConnection() throws SQLException  {
-
+    public void SetConnection() throws SQLException {
         DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
         connection = DriverManager.getConnection(connectionUrl);
+    }
+
+    public void SetConnectionByString(String coonnectString) throws SQLException  {
+        DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+        connection = DriverManager.getConnection(coonnectString);
     }
 
     public ResultSet ExecuteQuery(String query) throws SQLException{

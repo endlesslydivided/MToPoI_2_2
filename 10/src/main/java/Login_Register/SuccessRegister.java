@@ -23,6 +23,16 @@ public class SuccessRegister extends HttpServlet {
             connection.SetConnection();
             String login = request.getParameter("login");
             String password = String.valueOf(request.getParameter("password"));
+            if(login.equals("")) {
+                request.setAttribute("message","Введите логин");
+                request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
+            }
+
+            if(password.equals("")) {
+                request.setAttribute("message","Введите пароль");
+                request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
+            }
+
             User user = new User(login,password);
             System.out.println("SELECT USERS.login FROM USERS WHERE login='" + login + "'");
             ResultSet queryResult = connection.ExecuteQuery("SELECT USERS.login FROM USERS WHERE login='" + login + "'");
@@ -32,12 +42,11 @@ public class SuccessRegister extends HttpServlet {
             {
                 if(queryResult.getString("login") == login);
                 {
-                    PrintWriter out = response.getWriter();
-                    out.println("<h1 style=\"text-align: center; color:red\">Регистрация не прошла успешно. Придумайте другой логин!</h1>");
+                    request.setAttribute("message","Такой пользователь уже существует");
+                    request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
                     return;
                 }
             }
-
             connection.Execute("SET NOCOUNT ON; INSERT INTO USERS values ('" +login + "','" + user.HashPassword()+ "','"+user.getSalt() + "')");
             request.setAttribute("Registration","Регистрация прошла успешно");
             request.getRequestDispatcher("/GoToLoginIn").forward(request,response);
