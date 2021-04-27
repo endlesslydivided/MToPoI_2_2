@@ -2,6 +2,7 @@ package Login_Register;
 
 import DB.DBConnector;
 import DB.User;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.*;
@@ -14,6 +15,10 @@ import java.sql.SQLException;
 
 @WebServlet(name = "SuccessLogin", value = "/SuccessLogin")
 public class SuccessLogin extends HttpServlet {
+
+    private static final Logger logger = Logger.getLogger(
+            SuccessLogin.class.getName());
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DBConnector connection = new DBConnector();
@@ -34,15 +39,17 @@ public class SuccessLogin extends HttpServlet {
                     {
                         System.out.println("test2");
                         response.sendRedirect("main.jsp");
-                        String log4jConfPath = "..\\10\\src\\resources\\log4j.properties";
+                        String log4jConfPath = "D:\\ALEX\\STUDY\\4SEM_2COURSE\\MToPiI\\LABS\\10\\src\\resources\\log4j.properties";
                         PropertyConfigurator.configure(log4jConfPath);
+                        logger.info("Пользователь произвёл вход :(" +login+ ")" );
+
                         return;
                     }
                 }
             }
             response.setContentType("text/html;charset=Windows-1251");
             PrintWriter out = response.getWriter();
-            out.write("<h1 style=\"text-align: center; color:red\" class=\"bg-warning font-weight-light\">Р’С…РѕРґ РЅРµ РїСЂРѕС€С‘Р» СѓСЃРїРµС€РЅРѕ. Р’РІРµРґРёС‚Рµ РґСЂСѓРіРѕР№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ!</h1>");
+            out.write("<h1 style=\"text-align: center; color:red\" class=\"bg-warning font-weight-light\">Вход не прошёл успешно. Введите другой логин или пароль!</h1>");
             return;
 
         } catch (SQLException exception) {

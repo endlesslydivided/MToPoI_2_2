@@ -2,6 +2,7 @@ package Login_Register;
 
 import DB.DBConnector;
 import DB.User;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,6 +15,9 @@ import java.sql.SQLException;
 
 @WebServlet(name = "SuccessRegister", value = "/SuccessRegister")
 public class SuccessRegister extends HttpServlet {
+
+    private static final Logger logger = Logger.getLogger(
+            SuccessRegister.class.getName());
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DBConnector connection = new DBConnector();
@@ -24,12 +28,12 @@ public class SuccessRegister extends HttpServlet {
             String login = request.getParameter("login");
             String password = String.valueOf(request.getParameter("password"));
             if(login.equals("")) {
-                request.setAttribute("message","Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ");
+                request.setAttribute("message","Введите логин");
                 request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
             }
 
             if(password.equals("")) {
-                request.setAttribute("message","Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ");
+                request.setAttribute("message","Введите пароль");
                 request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
             }
 
@@ -42,13 +46,16 @@ public class SuccessRegister extends HttpServlet {
             {
                 if(queryResult.getString("login") == login);
                 {
-                    request.setAttribute("message","РўР°РєРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
+                    request.setAttribute("message","Такой пользователь уже существует");
                     request.getRequestDispatcher("/RegistrationForm.jsp").forward(request, response);
                     return;
                 }
             }
+
             connection.Execute("SET NOCOUNT ON; INSERT INTO USERS values ('" +login + "','" + user.HashPassword()+ "','"+user.getSalt() + "')");
-            request.setAttribute("Registration","Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ");
+            request.setAttribute("Registration","Регистрация прошла успешно");
+            logger.info("Новый пользователь зарегистрировался :(" +login+ ")" );
+
             request.getRequestDispatcher("/GoToLoginIn").forward(request,response);
             return;
 

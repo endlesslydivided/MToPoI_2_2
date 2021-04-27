@@ -58,7 +58,7 @@
                     <fieldset>
                         <legend>Удалить игрока</legend>
 <form action="DeletePlayer" method="post">
-    <input name="number" class="form-control"  type="text" placeholder="ID для удаления"/><br>
+    <input name="ID" class="form-control"  type="text" placeholder="ID для удаления"/><br>
     <input type="submit" class="btn btn-info mx-auto" value="Удалить"/>
 </form>
                     </fieldset>

@@ -18,5 +18,7 @@ CREATE TABLE PLAYERS
 (
 id int identity(1,1) constraint PK_PLAYERS primary key(id),
 number int NOT NULL unique,
-fullName nvarchar(500) NOT NULL unique
+fullName nvarchar(500) NOT NULL
 )
+
+DROP DATABASE USERSJAVA

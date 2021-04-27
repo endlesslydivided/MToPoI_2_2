@@ -1,6 +1,7 @@
 package playerDispatcher;
 
 import DB.DBConnector;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,10 @@ import java.sql.SQLException;
 
 @WebServlet(name = "UpdatePlayer", value = "/UpdatePlayer")
 public class UpdatePlayer extends HttpServlet {
+
+    private static final Logger logger = Logger.getLogger(
+            UpdatePlayer.class.getName());
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=WINDOWS-1251");
@@ -31,19 +36,22 @@ public class UpdatePlayer extends HttpServlet {
             if(fullName != "" && number != "")
             {
                 AddElementConnection.Execute("UPDATE PLAYERS set number = '" + number + "', fullname ='" + fullName + "'");
+                logger.info("Обновлена информация об игроке:("  + number + "," + fullName + ")" );
             }
             else if(fullName == "" && number != "")
             {
                 AddElementConnection.Execute("UPDATE PLAYERS set number = '" + number + "'" );
+                logger.info("Обновлена информация об игроке:("  + number +  ")" );
             }
             else if(fullName != "" && number == "")
             {
                 AddElementConnection.Execute("UPDATE PLAYERS set fullname = '" + fullName + "'" );
+                logger.info("Обновлена информация об игроке:(" + fullName + ")" );
             }
             else if(fullName == "" && number == "")
             {
                 PrintWriter out = response.getWriter();
-                out.write("<h1 style=\"text-align: center; color:red\" class=\"bg-warning font-weight-light\">РџСѓСЃС‚С‹Рµ РїРѕР»СЏ!</h1>");
+                out.write("<h1 style=\"text-align: center; color:red\" class=\"bg-warning font-weight-light\">Пустые поля!</h1>");
 
             }
             request.getRequestDispatcher("/main.jsp").forward(request, response);

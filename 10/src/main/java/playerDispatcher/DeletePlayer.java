@@ -1,6 +1,7 @@
 package playerDispatcher;
 
 import DB.DBConnector;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,8 @@ import java.sql.SQLException;
 @WebServlet(name = "DeletePlayer", value = "/DeletePlayer")
 public class DeletePlayer extends HttpServlet {
 
+    private static final Logger logger = Logger.getLogger(
+            DeletePlayer.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,6 +23,8 @@ public class DeletePlayer extends HttpServlet {
         try {
             AddElementConnection.SetConnection();
             AddElementConnection.Execute("DELETE PLAYERS WHERE id =  '" +ID + "'");
+            logger.info("Удалён игрок с идентификатором:(" +ID +")" );
+
             request.getRequestDispatcher("/main.jsp").forward(request, response);
         } catch (SQLException exception) {
             request.setAttribute("Message",exception.getMessage());

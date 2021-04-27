@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" strict="true"
+               name="XMLConfigTest" packages="org.apache.logging.log4j.test">
+    <Filter type="ThresholdFilter" level="trace" />
+
+    <Appenders>
+        <Console name="STDOUT">
+            <Layout type="PatternLayout" pattern="%m %n" />
+        </Console>
+            <File name="file" fileName="D:\ALEX\STUDY\4SEM_2COURSE\MToPiI\LABS\10\log.log">
+                <PatternLayout>
+                    <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+                </PatternLayout>
+            </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Корневой логгер -->
+        <Root level="trace">
+            <AppenderRef ref="file" level="DEBUG"/>
+        </Root>
+        <!-- Логгер нашего класса -->
+        <Logger name="logging.log4j.LoggingLog4j" level="info" additivity="false">
+            <AppenderRef ref="file2" level="INFO"/>
+        </Logger>
+    </Loggers>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </Loggers>
+
+</Configuration>
