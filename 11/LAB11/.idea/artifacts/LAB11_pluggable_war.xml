@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="LAB11_pluggable:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>LAB11_pluggable</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="LAB11_pluggable-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="LAB11_pluggable:war exploded" />
+    </root>
+  </artifact>
+</component>

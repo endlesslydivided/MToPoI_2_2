@@ -19,6 +19,7 @@
     <div class="row align-items-center h-100">
         <div class="col-sm-5 col-md-5 col-lg-5 col-5 col-xl-5 mx-auto">
             <div class="">
+                <h3 style="color: red">${message}</h3>
                 <div class="form-group">
                     <fieldset>
                             <legend>¬ход</legend>

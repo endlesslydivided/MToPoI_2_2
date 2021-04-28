@@ -37,7 +37,6 @@ public class SuccessLogin extends HttpServlet {
                     System.out.println(user.HashPasswordBySalt(password,queryResult.getString("salt")));
                     if(queryResult.getString("password").equals(user.HashPasswordBySalt(password, queryResult.getString("salt"))))
                     {
-                        System.out.println("test2");
                         response.sendRedirect("main.jsp");
                         String log4jConfPath = "D:\\ALEX\\STUDY\\4SEM_2COURSE\\MToPiI\\LABS\\10\\src\\resources\\log4j.properties";
                         PropertyConfigurator.configure(log4jConfPath);
@@ -47,9 +46,8 @@ public class SuccessLogin extends HttpServlet {
                     }
                 }
             }
-            response.setContentType("text/html;charset=Windows-1251");
-            PrintWriter out = response.getWriter();
-            out.write("<h1 style=\"text-align: center; color:red\" class=\"bg-warning font-weight-light\">Вход не прошёл успешно. Введите другой логин или пароль!</h1>");
+            request.setAttribute("message","Неверный логин или пароль!");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
             return;
 
         } catch (SQLException exception) {

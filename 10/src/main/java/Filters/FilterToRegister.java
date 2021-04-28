@@ -15,38 +15,31 @@ public class FilterToRegister implements Filter {
 
     public void init(FilterConfig fConfig) {
         config = fConfig;
-        String act = fConfig.getInitParameter("active");
-        if (act != null)
-            active = (act.equalsIgnoreCase("TRUE"));
-        if (pages == null)
-            pages = new ArrayList<>();
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (active) {
-            HttpServletRequest req = (HttpServletRequest)request;
-            // Раскладываем адрес на составляющие
-            String[] list = req.getRequestURI().split("/");
-            // Извлекаем наименование страницы
-            String page = null;
-            if (list[list.length - 1].indexOf(".jsp") > 0)
+        HttpServletRequest req = (HttpServletRequest)request;
+        // Раскладываем адрес на составляющие
+        String[] list = req.getRequestURI().split("/");
+        // Извлекаем наименование страницы
+        String page = null;
+        if (list[list.length - 1].indexOf(".jsp") > 0)
+        {
+            page = list[list.length - 1];
+        }
+        if ((page != null) && page.equalsIgnoreCase("main.jsp")) {
+            if (pages.contains("main.jsp"))
             {
-                page = list[list.length - 1];
+                chain.doFilter(request, response);
+            } else {
+                ServletContext ctx = config.getServletContext();
+                RequestDispatcher dispatcher = ctx.getRequestDispatcher("/registration.jsp");
+                dispatcher.forward(request, response);
             }
-            if ((page != null) && page.equalsIgnoreCase("main.jsp")) {
-                if (pages.contains("main.jsp"))
-                {
-                    chain.doFilter(request, response);
-                } else {
-                    ServletContext ctx = config.getServletContext();
-                    RequestDispatcher dispatcher = ctx.getRequestDispatcher("/registration.jsp");
-                    dispatcher.forward(request, response);
-                }
-                return;
-            } else if (page != null) {
-                if (!pages.contains(page))
-                    pages.add(page);
-            }
+            return;
+        } else if (page != null) {
+            if (!pages.contains(page))
+                pages.add(page);
         }
         chain.doFilter(request, response);
     }

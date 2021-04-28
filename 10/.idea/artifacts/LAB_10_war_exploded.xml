@@ -13,6 +13,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="LAB_10" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/LAB_10-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
