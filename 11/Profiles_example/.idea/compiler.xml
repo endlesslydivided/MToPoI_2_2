@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="example1" />
+        <module name="WAR" />
+        <module name="JAR" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15">
-      <module name="example1" target="1.8" />
+      <module name="example1" target="1.5" />
+      <module name="JAR" target="1.8" />
+      <module name="WAR" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/JAR/JAR.iml" filepath="$PROJECT_DIR$/JAR/JAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WAR/WAR.iml" filepath="$PROJECT_DIR$/WAR/WAR.iml" />
       <module fileurl="file://$PROJECT_DIR$/example1.iml" filepath="$PROJECT_DIR$/example1.iml" />
     </modules>
   </component>

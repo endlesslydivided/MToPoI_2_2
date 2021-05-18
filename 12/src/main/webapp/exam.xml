@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<exam>
+   <ex>
+      <name>OOP</name>
+      <prepod>Patsei</prepod>
+   </ex>
+   
+   <ex>
+      <name>Java</name>
+      <author>Patsei</author>
+   </ex>
+</exam>
