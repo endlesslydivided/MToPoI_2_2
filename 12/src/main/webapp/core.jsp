@@ -16,7 +16,7 @@
 </c:if>
 <br/>
 <p>Вычисление</p>
-<c:out value = "234 + 45 * 2 = "/><c:out value="${234 + 45 * 2}"/>
+<c:out value = "100 + 10* 10 = "/><c:out value="${100 + 10 * 10}"/>
 <br/>
 <p>Теги условного перехода</p>
 <c:set var="number" value="50"/>
@@ -39,11 +39,11 @@
 <c:catch var="ArithmeticException">
     <% int num = 0 / 0; %>
 </c:catch>
-The Exception is : ${ArithmeticException}
+Исключение : ${ArithmeticException}
 <c:catch var="Exception">
     <% int num = 0 / 'a'; %>
 </c:catch>
-The Exception is : ${Exception}
+Исключение : ${Exception}
 <br/>
 </body>
 </html>

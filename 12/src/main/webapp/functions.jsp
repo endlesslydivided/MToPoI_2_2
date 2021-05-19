@@ -21,23 +21,23 @@
     </c:if>
 
     <c:if test = "${fn:endsWith(string, 'a')}">
-        String ends with a<br/><br/>
+        Строка заканчивается на a<br/><br/>
     </c:if>
 
-    <c:set var = "string1" value = "This is first String."/>
-    <c:set var = "string2" value = "This <abc>is second String.</abc>"/>
+    <c:set var = "string1" value = "Это первая строка."/>
+    <c:set var = "string2" value = "Это <abc>вторая строка.</abc>"/>
     Index (1) : ${fn:indexOf(string1, "first")}<br/>
     Index (2) : ${fn:indexOf(string2, "second")}<br/><br/>
 
-    <c:set var = "string1" value = "This is first String."/>
+    <c:set var = "string1" value = "Это первая строка."/>
     <c:set var = "string2" value = "${fn:split(string1, ' ')}" />
     <c:set var = "string3" value = "${fn:join(string2, '-')}" />
     ${string3}<br/><br/>
 
-    <c:set var = "string1" value = "This is first String."/>
-    Length of String1 : ${fn:length(string1)}<br/><br/>
+    <c:set var = "string1" value = "Это первая строка."/>
+    Длина строки  String1 : ${fn:length(string1)}<br/><br/>
 
-    <c:set var = "string1" value = "This is first String."/>
+    <c:set var = "string1" value = "Это первая строка."/>
     <c:set var = "string2" value = "${fn:replace(string1, 'first', 'second')}" />
     ${string2}<br>
 </body>

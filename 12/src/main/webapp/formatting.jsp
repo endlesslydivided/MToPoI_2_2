@@ -25,7 +25,7 @@
     <h4>Перевод чисел</h4>
         <c:set var="currentNumber" value="125"/>
         <c:out value="Вывод формата числа : ${currentNumber}"/> <br/>
-        Формат (по умолчанию) :
+        Формат :
         <fmt:formatNumber value="${currentNumber}" /><br/>
         Процентный формат :
         <fmt:formatNumber value="${currentNumber}"
@@ -34,7 +34,7 @@
         Белорусские рубли :
         <fmt:formatNumber value="${currentNumber}"
                           type="currency"/><br/>
-        Французская валюта :
+        Американская валюта :
         <fmt:setLocale value="en-US"/>
         <fmt:formatNumber value= "${currentNumber}" type="currency"/><br/>
 </body>

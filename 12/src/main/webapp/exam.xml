@@ -4,7 +4,22 @@
       <name>OOP</name>
       <prepod>Patsei</prepod>
    </ex>
-   
+
+   <ex>
+      <name>MP</name>
+      <prepod>Plush</prepod>
+   </ex>
+
+   <ex>
+      <name>Economy</name>
+      <author>Shsishlo</author>
+   </ex>
+
+   <ex>
+      <name>KGIG</name>
+      <author>Korolenya</author>
+   </ex>
+
    <ex>
       <name>Java</name>
       <author>Patsei</author>

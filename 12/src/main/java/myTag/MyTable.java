@@ -12,7 +12,7 @@ public class MyTable extends TagSupport {
         try {
             jspWriter.print("<table border=\"1\" >" +
                     "<tr>" +
-                    "<th>Parameter</th><th>Value</th>" +
+                    "<th>Параметр</th><th>Значение</th>" +
                     "</tr>");
             Enumeration params = pageContext.getRequest().getParameterNames();
             while(params.hasMoreElements()) {
