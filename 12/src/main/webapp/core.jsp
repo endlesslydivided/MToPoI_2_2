@@ -12,7 +12,7 @@
 <p>Проверка условия</p>
 <c:set var="java" value="good" scope="page"/>
 <c:if test="${ not empty java and java eq 'good' }">
-    Java is good
+    Java
 </c:if>
 <br/>
 <p>Вычисление</p>
@@ -40,10 +40,7 @@
     <% int num = 0 / 0; %>
 </c:catch>
 Исключение : ${ArithmeticException}
-<c:catch var="Exception">
-    <% int num = 0 / 'a'; %>
-</c:catch>
-Исключение : ${Exception}
+
 <br/>
 </body>
 </html>

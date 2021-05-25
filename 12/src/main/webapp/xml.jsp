@@ -9,7 +9,7 @@
     </head>
     <body>
     <x:parse var="info">
-        <c:import url="exam.xml" />
+        <c:import url="exams.xml" />
     </x:parse>
     </body>
     </html>

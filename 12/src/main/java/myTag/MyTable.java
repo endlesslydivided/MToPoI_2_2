@@ -22,7 +22,7 @@ public class MyTable extends TagSupport {
                 jspWriter.println("<td> " + paramValue + "</td></tr>");
             }
         } catch (IOException e) {
-            System.out.println("MySubmit: " + e);
+            System.out.println("Мой ввод: " + e);
         }
 
         return EVAL_BODY_INCLUDE;

@@ -6,18 +6,15 @@
     <title>Function</title>
 </head>
 <body>
-    <c:set var="string" value="hi, Java!"/>
+    <c:set var="string" value="Java!"/>
 
     <c:if test="${fn:contains(string, 'java')}">
-        string contains java
+        Cтрока содержитж java
     </c:if>
     <br/>
-    <c:if test="${fn:contains(string, 'Java')}">
-        string contains Java
-    </c:if>
-    <br/><br/>
+
     <c:if test = "${fn:containsIgnoreCase(string, 'a')}">
-        string contains a(IgnoreCase)<br/><br/>
+        Строка содержит a (IgnoreCase)<br/><br/>
     </c:if>
 
     <c:if test = "${fn:endsWith(string, 'a')}">
@@ -26,8 +23,8 @@
 
     <c:set var = "string1" value = "Это первая строка."/>
     <c:set var = "string2" value = "Это <abc>вторая строка.</abc>"/>
-    Index (1) : ${fn:indexOf(string1, "first")}<br/>
-    Index (2) : ${fn:indexOf(string2, "second")}<br/><br/>
+    Индекс (1) : ${fn:indexOf(string1, "строка")}<br/>
+    Индекс (2) : ${fn:indexOf(string2, "вторая")}<br/><br/>
 
     <c:set var = "string1" value = "Это первая строка."/>
     <c:set var = "string2" value = "${fn:split(string1, ' ')}" />
